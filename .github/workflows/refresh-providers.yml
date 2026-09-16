@@ -3,6 +3,9 @@ name: Refresh providers.json
 # Pulls LiteLLM's published model catalog four times a day and commits the
 # extracted provider allow-list whenever the upstream data changes.
 on:
+  push:
+    branches:
+      - main
   schedule:
     # 04:00 / 10:00 / 16:00 / 22:00 UTC = 12:00 / 18:00 / 00:00 / 06:00 in
     # UTC+8.  GitHub can delay scheduled runs by a few minutes when busy, but
@@ -23,12 +26,16 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: "3.13"
+
+      - name: Install dependencies
+        # build_providers.py reads the curated models.yaml files (PyYAML).
+        run: python -m pip install pyyaml
 
       - name: Extract the provider catalog
         run: python scripts/build_providers.py --verbose
