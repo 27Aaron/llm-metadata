@@ -58,6 +58,7 @@ PROVIDER_GROUPS: dict[str, set[str]] = {
     "anthropic": {"anthropic"},
     "deepseek": {"deepseek"},
     "gemini": {"gemini"},
+    "minimax": {"minimax"},
     "moonshot": {"moonshot"},
     "openai": {"openai"},
     "xai": {"xai"},

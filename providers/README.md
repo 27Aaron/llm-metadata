@@ -80,6 +80,18 @@ defaults (`max` / `high`) rather than API defaults, so they carry no value here.
 - <https://platform.kimi.com/docs/models>
 - <https://www.kimi.com/code/docs/kimi-code/models.html>
 
+### MiniMax — `reasoning.effort` is a thinking switch, not a depth level
+
+MiniMax has no reasoning-effort depth levels. On the OpenAI-compatible
+endpoint (used by Codex), `reasoning.effort` is a thinking on/off switch for
+MiniMax-M3: any non-`none` value (e.g. `high`) turns on Adaptive Thinking,
+`none` turns it off. The Codex model catalog template ships with
+`default_reasoning_level: "high"`, and the OpenAI-compatible endpoint also
+defaults to thinking on. On the M2.x family thinking cannot be disabled, so
+their entries carry `[high]` (inferred) as the effective default.
+- <https://platform.minimax.cn/docs/token-plan/codex>
+- <https://platform.minimax.io/docs/api-reference/text-openai-api>
+
 ## `reasoning_levels` audit — 2026-09-16
 
 `reasoning_levels` was checked against each provider's documented supported
@@ -115,6 +127,11 @@ is flagged with an `Unverified` comment in the YAML):
   underlying V4 Flash model was retired on 2026-09-10, but requests to the name
   are temporarily served by V4.1 Flash, so the entry stays while the name
   remains in active use.
+- **MiniMax's `reasoning.effort` is a switch, not a depth level.** Any
+  non-`none` value turns on Adaptive Thinking on MiniMax-M3 and does not change
+  depth; `output_config.effort` (what Claude Code sends over the Anthropic
+  endpoint) is not supported by MiniMax — effort only takes effect on the
+  OpenAI-compatible endpoint.
 - **LiteLLM carries this field on only a few rows.** In `providers.json`,
   `default_reasoning_effort` appears on 39 upstream entries (Azure/OpenRouter
   GPT-5.x rows with values `none`/`medium`, each tagged with a `source` URL).
