@@ -1,0 +1,51 @@
+name: Refresh providers.json
+
+# Pulls LiteLLM's published model catalog four times a day and commits the
+# extracted provider allow-list whenever the upstream data changes.
+on:
+  schedule:
+    # 04:00 / 10:00 / 16:00 / 22:00 UTC = 12:00 / 18:00 / 00:00 / 06:00 in
+    # UTC+8.  GitHub can delay scheduled runs by a few minutes when busy, but
+    # it always runs them on the latest commit of the default branch.
+    - cron: "0 4,10,16,22 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-providers
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Extract the provider catalog
+        run: python scripts/build_providers.py --verbose
+
+      - name: Commit and push when the catalog changed
+        run: |
+          # Stage first so a first-time run (file not tracked yet) counts as a
+          # change; `git diff --cached --quiet` then tells us if anything moved.
+          git add providers.json
+          if git diff --cached --quiet; then
+            echo "providers.json is already up to date"
+            exit 0
+          fi
+          # user.name/user.email set both the author and the committer.
+          git config user.name "Aaron"
+          git config user.email "85681241+27Aaron@users.noreply.github.com"
+          git commit \
+            -m "chore: refresh providers.json" \
+            -m "Co-authored-by: Aaron's Bot <155336205+3ayonara@users.noreply.github.com>"
+          git push
