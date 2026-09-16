@@ -1,0 +1,65 @@
+# Google (Gemini) model metadata.
+#
+# `default_reasoning_effort` mirrors the per-model default `thinkingLevel`.
+# Google documents a default for every Gemini 3 model; values checked
+# 2026-09-16 against:
+#   https://ai.google.dev/gemini-api/docs/generate-content/thinking
+#   https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/thinking
+#
+# Caveat: the Gemini 3 developer guide has a blanket "defaults to high" line
+# that contradicts the per-model table; the per-model table is authoritative.
+# Retired models are removed; see ../README.md for the audit and removal log.
+provider: gemini
+models:
+  - id: gemini-3-flash-preview
+    name: "Gemini 3 Flash"
+    reasoning_levels: [minimal, low, medium, high]
+    # Default HIGH (per-model table). The deprecations page lists gemini-3.6-flash
+    # as the recommended replacement; no shutdown date announced yet.
+    default_reasoning_effort: high
+  - id: gemini-3-pro-image
+    name: "Gemini 3 Pro Image"
+    reasoning_levels: [high]
+    # "Gemini 3 Pro Image | `HIGH` | `HIGH`" — HIGH is both the default and the
+    # only supported level.
+    default_reasoning_effort: high
+  - id: gemini-3.1-flash-image
+    name: "Gemini 3.1 Flash Image"
+    reasoning_levels: [minimal, high]
+    # Default MINIMAL (Gemini 3.1 Flash Image row).
+    default_reasoning_effort: minimal
+  - id: gemini-3.1-pro-preview
+    name: "Gemini 3.1 Pro Preview"
+    reasoning_levels: [low, medium, high]
+    # Default HIGH.
+    default_reasoning_effort: high
+  - id: gemini-3.1-pro-preview-customtools
+    name: "Gemini 3.1 Pro"
+    reasoning_levels: [low, medium, high]
+    # No dedicated page for this variant; treated as Gemini 3.1 Pro (default HIGH).
+    default_reasoning_effort: high
+  - id: gemini-3.5-flash
+    name: "Gemini 3.5 Flash"
+    reasoning_levels: [minimal, low, medium, high]
+    # Default MEDIUM.
+    default_reasoning_effort: medium
+  - id: gemini-3.5-flash-lite
+    name: "Gemini 3.5 Flash-Lite"
+    reasoning_levels: [minimal, low, medium, high]
+    # Default MINIMAL.
+    default_reasoning_effort: minimal
+  - id: gemini-3.6-flash
+    name: "Gemini 3.6 Flash"
+    reasoning_levels: [minimal, low, medium, high]
+    # Default MEDIUM.
+    default_reasoning_effort: medium
+  - id: gemini-3.7-flash
+    name: "Gemini 3.7 Flash"
+    reasoning_levels: [low, medium, high]
+    # Default MEDIUM.
+    default_reasoning_effort: medium
+  - id: gemini-3.8-flash
+    name: "Gemini 3.8 Flash"
+    reasoning_levels: [low, medium, high]
+    # Default MEDIUM.
+    default_reasoning_effort: medium

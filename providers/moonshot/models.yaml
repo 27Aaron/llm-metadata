@@ -1,0 +1,45 @@
+# Moonshot (Kimi) model metadata.
+#
+# `default_reasoning_effort` is the API default when a request does not set
+# `reasoning_effort`. Checked 2026-09-16 against:
+#   https://platform.kimi.com/docs/guide/use-reasoning-effort
+#   https://platform.kimi.com/docs/api/models-overview
+#   https://platform.kimi.com/docs/models
+#
+# Caveat: the Kimi Code product applies its own defaults (K3 and k3-256k:
+# `high`, K2.8 Preview: `max`), which differ from the API defaults.
+#   https://www.kimi.com/code/docs/kimi-code/models.html
+# Retired models are removed; see ../README.md for the audit and removal log.
+provider: moonshot
+models:
+  - id: kimi-k2.6
+    name: "Kimi K2.6"
+    # No `reasoning_effort` support; thinking is controlled by `thinking.type`
+    # (default enabled).
+  - id: kimi-k2.7-code
+    name: "Kimi K2.7 Code"
+    # No `reasoning_effort` support; thinking is always on.
+  - id: kimi-k2.7-code-highspeed
+    name: "Kimi K2.7 Code HighSpeed"
+    # Same model as kimi-k2.7-code (faster output only).
+  - id: kimi-k2.8
+    name: "Kimi K2.8 Preview"
+    reasoning_levels: [low, high, max]
+    # Kimi Code product model; not covered by the platform.kimi.com API docs.
+    # Kimi Code lists the product default as `max`; no API default documented,
+    # so left unset.
+  - id: kimi-k2.8-code
+    name: "Kimi K2.8 Code Preview"
+    reasoning_levels: [low, high, max]
+    # See kimi-k2.8 above; left unset.
+  - id: kimi-k3
+    name: "Kimi K3"
+    reasoning_levels: [low, high, max]
+    # API default is `max`: "该字段支持 \"low\" / \"high\" / \"max\" 三档，默认 \"max\"".
+    default_reasoning_effort: max
+  - id: kimi-k3-256k
+    name: "Kimi K3 256K"
+    reasoning_levels: [low, high, max]
+    # Not listed on platform.kimi.com (checked 2026-09-16). Kimi Code lists
+    # `k3-256k` with a product default of `high`; no API default documented,
+    # so left unset.

@@ -1,0 +1,40 @@
+# xAI (Grok) model metadata.
+#
+# `default_reasoning_effort` is the level applied when a request does not set
+# `reasoning_effort`. Checked 2026-09-16 against the model pages and:
+#   https://docs.x.ai/developers/model-capabilities/text/reasoning
+#
+# Caveat: on `grok-4.20-multi-agent`, effort selects how many agents
+# collaborate, not reasoning depth.
+#   https://docs.x.ai/developers/model-capabilities/text/multi-agent
+# Retired models are removed; see ../README.md for the audit and removal log.
+provider: xai
+models:
+  - id: grok-4.20-multi-agent-0309
+    name: "Grok 4.20 Multi Agent 0309"
+    reasoning_levels: [low, medium, high, xhigh]
+    # Effort controls the number of collaborating agents: "low"/"medium" = 4
+    # agents, "high"/"xhigh" = 16 agents; no default documented.
+    # https://docs.x.ai/developers/model-capabilities/text/multi-agent
+  - id: grok-4.3
+    name: "Grok 4.3"
+    reasoning_levels: [none, low, medium, high]
+    # Model page: "Reasoning efforts — Supported: none, low, medium, high,
+    # xhigh — Default: low". (xhigh is only honoured from grok-4.6 onwards;
+    # earlier models treat it as high.)
+    # https://docs.x.ai/developers/models/grok-4.3
+    default_reasoning_effort: low
+  - id: grok-4.5
+    name: "Grok 4.5"
+    reasoning_levels: [low, medium, high]
+    # "If not specified, `reasoning_effort` defaults to `\"high\"`." The model
+    # page also lists `xhigh`, but it is not honoured before grok-4.6 (treated
+    # as high), so it is excluded here.
+    # https://docs.x.ai/developers/model-capabilities/text/reasoning
+    default_reasoning_effort: high
+  - id: grok-4.6
+    name: "Grok 4.6"
+    reasoning_levels: [low, medium, high, xhigh]
+    # Same default as grok-4.5: `high`.
+    # https://docs.x.ai/developers/models/grok-4.6
+    default_reasoning_effort: high

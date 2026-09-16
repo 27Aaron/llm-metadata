@@ -1,0 +1,120 @@
+# OpenAI model metadata.
+#
+# `default_reasoning_effort` is the level the API applies when a request does
+# not set `reasoning.effort`. OpenAI documents defaults per model ("Defaults are
+# also model-dependent rather than universal"), so each entry carries its own
+# source below. Models whose docs state no default are intentionally left
+# without the field. Retired models are removed; see ../README.md for the audit
+# and the removal log.
+#
+# Note: older snapshots of the GPT-5 family and o3 (e.g. gpt-5-2025-08-07,
+# gpt-5-mini-2025-08-07, o3-2025-04-16) are scheduled to shut down 2026-12-11;
+# the model IDs themselves remain available.
+provider: openai
+models:
+  - id: codex-auto-review
+    name: "Codex Auto Review"
+    # Unverified: the docs list no supported effort values (checked 2026-09-16).
+    reasoning_levels: [low, medium, high, xhigh]
+    # No default documented for this Codex variant.
+  - id: gpt-5
+    name: "GPT-5"
+    reasoning_levels: [minimal, low, medium, high]
+    # GPT-5.1 changelog: GPT-5.1 "defaults to a new `none` reasoning setting ...
+    # different from the previous `medium` default setting in GPT-5."
+    # https://developers.openai.com/api/docs/changelog
+    default_reasoning_effort: medium
+  - id: gpt-5-mini
+    name: "GPT-5 Mini"
+    # Unverified: the docs list no supported effort values (checked 2026-09-16).
+    reasoning_levels: [low, medium, high]
+    # GPT-5 family default (`medium`) per the GPT-5.1 changelog; the model page
+    # itself no longer restates a default. Same for GPT-5 Nano.
+    default_reasoning_effort: medium
+  - id: gpt-5-nano
+    name: "GPT-5 Nano"
+    # Unverified: the docs list no supported effort values (checked 2026-09-16).
+    reasoning_levels: [low, medium, high]
+    default_reasoning_effort: medium
+  - id: gpt-5.1
+    name: "GPT-5.1"
+    reasoning_levels: [none, low, medium, high]
+    # "Reasoning.effort supports: none (default), low, medium, and high."
+    # https://developers.openai.com/api/docs/models/gpt-5.1
+    default_reasoning_effort: none
+  - id: gpt-5.2
+    name: "GPT-5.2"
+    reasoning_levels: [none, low, medium, high, xhigh]
+    # "Reasoning.effort supports: none (default), low, medium, high and xhigh."
+    # https://developers.openai.com/api/docs/models/gpt-5.2
+    default_reasoning_effort: none
+  - id: gpt-5.3-codex
+    name: "GPT-5.3 Codex"
+    reasoning_levels: [low, medium, high, xhigh]
+    # "GPT-5.3-Codex supports `low`, `medium`, `high`, and `xhigh` reasoning
+    # effort settings."
+    # https://developers.openai.com/api/docs/models/gpt-5.3-codex
+    # No default documented (checked 2026-09-16); left unset.
+  - id: gpt-5.3-codex-spark
+    name: "GPT 5.3 Codex Spark"
+    # Unverified: no model page in the current docs (checked 2026-09-16).
+    reasoning_levels: [low, medium, high, xhigh]
+    # No default documented (checked 2026-09-16); left unset.
+  - id: gpt-5.4
+    name: "GPT-5.4"
+    reasoning_levels: [none, low, medium, high, xhigh]
+    # "Reasoning.effort supports: none (default), low, medium, high and xhigh."
+    # https://developers.openai.com/api/docs/models/gpt-5.4
+    default_reasoning_effort: none
+  - id: gpt-5.4-mini
+    name: "GPT-5.4 Mini"
+    reasoning_levels: [none, low, medium, high, xhigh]
+    # Same as GPT-5.4: "none (default)".
+    # https://developers.openai.com/api/docs/models/gpt-5.4-mini
+    default_reasoning_effort: none
+  - id: gpt-5.4-nano
+    name: "GPT-5.4 Nano"
+    reasoning_levels: [none, low, medium, high, xhigh]
+    # Same as GPT-5.4: "none (default)".
+    # https://developers.openai.com/api/docs/models/gpt-5.4-nano
+    default_reasoning_effort: none
+  - id: gpt-5.4-pro
+    name: "GPT-5.4 Pro"
+    reasoning_levels: [medium, high, xhigh]
+    # "Reasoning.effort supports: medium (default), high and xhigh."
+    # https://developers.openai.com/api/docs/models/gpt-5.4-pro
+    default_reasoning_effort: medium
+  - id: gpt-5.5
+    name: "GPT-5.5"
+    reasoning_levels: [none, low, medium, high, xhigh]
+    # "Reasoning.effort supports: none, low, medium (default), high and xhigh."
+    # https://developers.openai.com/api/docs/models/gpt-5.5
+    default_reasoning_effort: medium
+  - id: gpt-5.5-pro
+    name: "GPT-5.5 Pro"
+    reasoning_levels: [medium, high, xhigh]
+    # "Reasoning.effort supports: medium, high (default) and xhigh."
+    # https://developers.openai.com/api/docs/models/gpt-5.5-pro
+    default_reasoning_effort: high
+  - id: gpt-5.6-luna
+    name: "GPT-5.6 Luna"
+    reasoning_levels: [none, low, medium, high, xhigh, max]
+    # GPT-5.6 family: "If you omit `reasoning.effort`, GPT-5.6 defaults to
+    # `medium` in both modes." Same for GPT-5.6 Sol and GPT-5.6 Terra.
+    # https://developers.openai.com/api/docs/guides/reasoning
+    default_reasoning_effort: medium
+  - id: gpt-5.6-sol
+    name: "GPT-5.6 Sol"
+    reasoning_levels: [none, low, medium, high, xhigh, max]
+    # "Reasoning.effort supports: none, low, medium (default), high, xhigh, and max."
+    # https://developers.openai.com/api/docs/models/gpt-5.6-sol
+    default_reasoning_effort: medium
+  - id: gpt-5.6-terra
+    name: "GPT-5.6 Terra"
+    reasoning_levels: [none, low, medium, high, xhigh, max]
+    default_reasoning_effort: medium
+  - id: gpt-6-astra
+    name: "GPT-6 Astra"
+    reasoning_levels: [low, medium, high, xhigh, max]
+    # Model page lists supported values but states no default (checked 2026-09-16).
+    # https://developers.openai.com/api/docs/models/gpt-6-astra

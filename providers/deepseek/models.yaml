@@ -1,0 +1,38 @@
+# DeepSeek model metadata.
+#
+# `default_reasoning_effort` is the effort applied when a request does not set
+# one. The official thinking-mode guide states it directly (checked 2026-09-16):
+# "思考模式默认打开，且 effort 默认为 `high`".
+#   https://api-docs.deepseek.com/zh-cn/guides/thinking_mode
+#
+# `reasoning_effort_aliases` records extra accepted values and the level each
+# one maps to, per the official mapping table (请求传入 effort → 实际映射 effort).
+# Retired models are removed; see ../README.md for the audit and removal log.
+provider: deepseek
+models:
+  - id: deepseek-v4-flash
+    name: "DeepSeek-V4-Flash"
+    reasoning_levels: [low, high, max]
+    # The underlying V4 Flash model was retired on 2026-09-10, but the name is
+    # still routed to V4.1 Flash; kept because the name remains in active use.
+    # Same mapping table as deepseek-v4-pro: minimal → low, medium → high,
+    # xhigh → high, ultra → max.
+    # https://api-docs.deepseek.com/updates/
+    reasoning_effort_aliases:
+      minimal: low
+      medium: high
+      xhigh: high
+      ultra: max
+    default_reasoning_effort: high
+  - id: deepseek-v4-pro
+    name: "DeepSeek-V4-Pro"
+    reasoning_levels: [low, high, max]
+    # Same mapping table as deepseek-v4-flash: minimal → low, medium → high,
+    # xhigh → high, ultra → max.
+    # https://api-docs.deepseek.com/zh-cn/guides/thinking_mode
+    reasoning_effort_aliases:
+      minimal: low
+      medium: high
+      xhigh: high
+      ultra: max
+    default_reasoning_effort: high
