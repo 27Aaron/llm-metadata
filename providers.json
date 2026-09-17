@@ -2502,6 +2502,117 @@
       "source": "https://developers.openai.com/api/docs/pricing"
     }
   },
+  "qwencloud": {
+    "qwen-image-2.0": {
+      "provider": "qwencloud",
+      "mode": "image_generation",
+      "source": "https://www.qwencloud.com/models",
+      "supported_endpoints": [
+        "/v1/images/generations"
+      ]
+    },
+    "qwen-image-2.0-pro": {
+      "provider": "qwencloud",
+      "mode": "image_generation",
+      "source": "https://www.qwencloud.com/models",
+      "supported_endpoints": [
+        "/v1/images/generations"
+      ]
+    },
+    "qwen-image-3.0": {
+      "provider": "qwencloud",
+      "mode": "image_generation",
+      "source": "https://www.qwencloud.com/models",
+      "supported_endpoints": [
+        "/v1/images/generations"
+      ]
+    },
+    "qwen-image-3.0-pro": {
+      "provider": "qwencloud",
+      "mode": "image_generation",
+      "source": "https://www.qwencloud.com/models",
+      "supported_endpoints": [
+        "/v1/images/generations"
+      ]
+    },
+    "qwen3.7-max": {
+      "provider": "qwencloud",
+      "cache_read_input_token_cost": 5e-07,
+      "input_cost_per_token": 2.5e-06,
+      "max_input_tokens": 991808,
+      "max_output_tokens": 65536,
+      "max_tokens": 65536,
+      "mode": "chat",
+      "output_cost_per_token": 7.5e-06,
+      "source": "https://www.qwencloud.com/models",
+      "supports_function_calling": true,
+      "supports_prompt_caching": true,
+      "supports_reasoning": true,
+      "supports_response_schema": true,
+      "supports_tool_choice": true,
+      "reasoning_switch": true,
+      "default_reasoning_enabled": true
+    },
+    "qwen3.7-plus": {
+      "provider": "qwencloud",
+      "max_input_tokens": 991808,
+      "max_output_tokens": 65536,
+      "max_tokens": 65536,
+      "mode": "chat",
+      "source": "https://www.qwencloud.com/models",
+      "supports_function_calling": true,
+      "supports_prompt_caching": true,
+      "supports_reasoning": true,
+      "supports_response_schema": true,
+      "supports_tool_choice": true,
+      "supports_vision": true,
+      "tiered_pricing": [
+        {
+          "cache_read_input_token_cost": 8e-08,
+          "input_cost_per_token": 4e-07,
+          "output_cost_per_token": 1.6e-06,
+          "range": [
+            0,
+            256000.0
+          ]
+        },
+        {
+          "cache_read_input_token_cost": 2.4e-07,
+          "input_cost_per_token": 1.2e-06,
+          "output_cost_per_token": 4.8e-06,
+          "range": [
+            256000.0,
+            1000000.0
+          ]
+        }
+      ],
+      "reasoning_switch": true,
+      "default_reasoning_enabled": true
+    },
+    "qwen3.8-max": {
+      "provider": "qwencloud",
+      "cache_read_input_token_cost": 2.5e-07,
+      "input_cost_per_token": 2e-06,
+      "max_input_tokens": 991808,
+      "max_output_tokens": 131072,
+      "max_tokens": 131072,
+      "mode": "chat",
+      "output_cost_per_token": 6e-06,
+      "source": "https://www.qwencloud.com/models",
+      "supports_function_calling": true,
+      "supports_prompt_caching": true,
+      "supports_reasoning": true,
+      "supports_response_schema": true,
+      "supports_tool_choice": true,
+      "supports_vision": true,
+      "reasoning_levels": [
+        "low",
+        "medium",
+        "xhigh"
+      ],
+      "default_reasoning_effort": "xhigh"
+    }
+  },
   "xai": {
     "grok-4.20-multi-agent-0309": {
       "provider": "xai",
