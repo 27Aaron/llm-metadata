@@ -3,7 +3,8 @@
 
 The curated per-provider YAML files (``providers/<provider>/models.yaml``) are
 the source of truth for which models to publish. Models that carry a
-``reasoning_levels`` field are merged with the matching LiteLLM catalog entry
+``reasoning_levels`` field (or the ``reasoning_switch`` marker used for plain
+on/off thinking models) are merged with the matching LiteLLM catalog entry
 (price, context window, capabilities); YAML models that LiteLLM does not know
 about are skipped. As an exception, LiteLLM image models (entries whose
 ``supported_endpoints`` contains an images endpoint) are published even though
@@ -61,6 +62,7 @@ PROVIDER_GROUPS: dict[str, set[str]] = {
     "minimax": {"minimax"},
     "moonshot": {"moonshot"},
     "openai": {"openai"},
+    "qwencloud": {"qwencloud"},
     "xai": {"xai"},
     "zai": {"zai"},
 }
@@ -112,10 +114,11 @@ def load_source(source: str) -> dict:
 
 
 def load_curated_models(metadata_dir: Path) -> dict[str, list[dict]]:
-    """Read ``<provider>/models.yaml``, keeping only models with reasoning_levels.
+    """Read ``<provider>/models.yaml``, keeping only publishable models.
 
-    Provider names come from the YAML directory names; models without a
-    ``reasoning_levels`` field are left out of the catalog.
+    Provider names come from the YAML directory names; models without
+    ``reasoning_levels`` or the ``reasoning_switch`` marker are left out of
+    the catalog.
     """
     curated: dict[str, list[dict]] = {}
     for yaml_file in sorted(metadata_dir.glob("*/models.yaml")):
@@ -124,7 +127,9 @@ def load_curated_models(metadata_dir: Path) -> dict[str, list[dict]]:
             continue
         data = yaml.safe_load(yaml_file.read_text(encoding="utf-8"))
         models = [
-            model for model in data.get("models", []) if model.get("reasoning_levels")
+            model
+            for model in data.get("models", [])
+            if model.get("reasoning_levels") or model.get("reasoning_switch")
         ]
         if models:
             curated[provider] = models
@@ -223,7 +228,8 @@ def extract(
     for provider, models in curated.items():
         out: dict[str, dict] = {}
 
-        # Curated models (with reasoning_levels) that LiteLLM also knows about.
+        # Curated models (reasoning_levels or reasoning_switch) that LiteLLM
+        # also knows about.
         for model in models:
             model_id = model["id"]
             matches = index[provider].get(model_id.casefold())
@@ -239,9 +245,14 @@ def extract(
                     if key != "litellm_provider"
                 }
             )
-            row["reasoning_levels"] = model["reasoning_levels"]
-            if "default_reasoning_effort" in model:
-                row["default_reasoning_effort"] = model["default_reasoning_effort"]
+            for field in (
+                "reasoning_levels",
+                "default_reasoning_effort",
+                "reasoning_switch",
+                "default_reasoning_enabled",
+            ):
+                if field in model:
+                    row[field] = model[field]
             out[model_id] = row
 
         # Image models straight from the catalog (no reasoning_levels).

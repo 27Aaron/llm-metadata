@@ -15,6 +15,10 @@ Each `<provider>/models.yaml` lists the models we track for one provider.
 - `default_reasoning_effort` — the effort the API applies when a request does
   not set one. Omitted when the provider does not document a default, or the
   model has no effort parameter.
+- `reasoning_switch` — `true` for models whose thinking is a plain on/off
+  switch with no effort levels; such entries carry no `reasoning_levels`.
+- `default_reasoning_enabled` — for switch models, whether thinking is on
+  when a request does not disable it.
 
 Retired models are removed from the YAMLs; retired names that are still routed
 to a successor (e.g. `deepseek-v4-flash`) stay and are labelled in the comments.
@@ -91,6 +95,45 @@ defaults to thinking on. On the M2.x family thinking cannot be disabled, so
 their entries carry `[high]` (inferred) as the effective default.
 - <https://platform.minimax.cn/docs/token-plan/codex>
 - <https://platform.minimax.io/docs/api-reference/text-openai-api>
+
+### QwenCloud — Qwen3.8 has depth levels, Qwen3.7 is a switch (checked 2026-09-17)
+
+Among QwenCloud's Qwen models, only the Qwen3.8 series exposes
+`reasoning_effort` depth levels: `low` / `medium` / `xhigh`, default `xhigh`.
+OpenAI standard names are accepted and mapped: `minimal` → `low`, `high` →
+`xhigh`, `max` → `xhigh`; `none` maps to `enable_thinking=false` (thinking
+off).
+- <https://docs.qwencloud.com/api-reference/chat/openai-chat>
+- <https://docs.qwencloud.com/api-reference/chat/openai-responses>
+- <https://qwen.ai/blog?id=qwen3.8> (launch post: "xhigh (default) / medium /
+  low")
+- <https://docs.qoder.com/zh/cli/model> (Qoder CLI agrees: 3.8-Max exposes
+  "low / medium / xhigh"; 3.7-Max/Plus have a thinking switch only)
+- <https://huggingface.co/Qwen/Qwen3.8-27B> /
+  <https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B> (the open-source members
+  document the same three levels)
+
+The Qwen3.7 series — the other Qwen family in day-to-day use — has no effort
+levels at all: it is officially a hybrid thinking model where
+`enable_thinking` toggles thinking on/off (on by default, `false` = reply
+directly) plus a `thinking_budget` token cap. Its entries therefore carry
+`reasoning_switch: true` and `default_reasoning_enabled: true` instead of
+`reasoning_levels`; no effort value is invented for it.
+- <https://docs.qwencloud.com/developer-guides/text-generation/thinking>
+- <https://help.aliyun.com/zh/model-studio/deep-thinking> (Model Studio lists
+  Qwen3.7-Max/Plus as hybrid thinking models)
+
+Earlier families (Qwen3.6/3.5/3, Qwen3-VL, Qwen3-Coder,
+Qwen-Max/Plus/Flash/Turbo, QwQ) behave the same way but are not tracked yet.
+
+All five Qwen3.8 members (the commercial `qwen3.8-max`, `qwen3.8-max-0902`,
+`qwen3.8-flash` and the open-source `qwen3.8-2.4t-a95b`, `qwen3.8-27b`) share
+the series levels. Only `qwen3.8-max` is present in LiteLLM's catalog today;
+the other four stay unpublished until upstream adds them. Both Qwen3.7
+entries are in the catalog already.
+
+Third-party models on QwenCloud (DeepSeek, GLM, Kimi) are not tracked here —
+they are covered by the `deepseek/`, `zai/`, and `moonshot/` files.
 
 ## `reasoning_levels` audit — 2026-09-16
 
