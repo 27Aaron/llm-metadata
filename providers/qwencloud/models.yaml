@@ -1,58 +1,54 @@
-# QwenCloud (Alibaba Qwen) model metadata.
+# QwenCloud（阿里 Qwen）模型元数据。
 #
-# Covers Alibaba's own Qwen models only. QwenCloud also serves third-party
-# models (DeepSeek, GLM, Kimi); those are tracked under their own provider
-# directories (deepseek/, zai/, moonshot/).
+# 仅覆盖阿里自家的 Qwen 模型。QwenCloud 也提供第三方模型（DeepSeek、GLM、
+# Kimi），那些模型记录在各自的提供方目录下（deepseek/、zai/、moonshot/）。
 #
-# Reasoning levels: on QwenCloud only the Qwen3.8 series exposes
-# `reasoning_effort` depth levels (`low` / `medium` / `xhigh`, default
-# `xhigh`). The Qwen3.7 series has no effort levels at all: officially it is
-# a hybrid thinking model — `enable_thinking` toggles thinking on/off
-# (true = think first, false = reply directly) and is ON by default — plus a
-# `thinking_budget` token cap. Its entries therefore carry
-# `reasoning_switch: true` with `default_reasoning_enabled: true` instead of
-# levels. Earlier families (Qwen3.6, Qwen3.5, Qwen3, Qwen3-VL, Qwen3-Coder,
-# Qwen-Max/Plus/Flash/Turbo, QwQ) behave the same way but are not tracked yet.
+# 思考等级：在 QwenCloud 上，只有 Qwen3.8 系列提供 `reasoning_effort` 深度
+# 等级（`low` / `medium` / `xhigh`，默认 `xhigh`）。Qwen3.7 系列完全没有
+# effort 等级：官方定义是混合思考模型——`enable_thinking` 开关切换思考/
+# 不思考（true = 先思考再回复，false = 直接回复），默认开启——另有
+# `thinking_budget` 思考 token 上限。因此其条目使用 `reasoning_switch: true`
+# 和 `default_reasoning_enabled: true`，而不是等级。更早的系列（Qwen3.6、
+# Qwen3.5、Qwen3、Qwen3-VL、Qwen3-Coder、Qwen-Max/Plus/Flash/Turbo、QwQ）
+# 行为相同，但暂未收录。
 #
-# Qwen3.8 levels — all five series members share them (checked 2026-09-17):
-#   "Qwen3.8 series: Options: `low`, `medium`, `xhigh`. Default: `xhigh`."
+# Qwen3.8 等级——五个系列成员共享（2026-09-17 核实）：
+#   官方文档："Qwen3.8 series: Options: `low`, `medium`, `xhigh`. Default:
+#   `xhigh`."
 #   https://docs.qwencloud.com/api-reference/chat/openai-chat
-#   The launch post and the open-source model cards announce the same three
-#   levels with `xhigh` as default:
+#   发布博客与开源模型卡给出同样三个等级、默认 `xhigh`：
 #   https://qwen.ai/blog?id=qwen3.8
 #   https://huggingface.co/Qwen/Qwen3.8-27B
 #   https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B
 #
-# `reasoning_effort_aliases` — OpenAI's standard names are accepted on top of
-# the native levels and mapped onto them: `minimal` → `low`, `high` → `xhigh`,
-# `max` → `xhigh`. `none` is not a level: it maps to `enable_thinking=false`
-# (thinking off).
+# `reasoning_effort_aliases`——在原生等级之外还接受 OpenAI 标准名并做映射：
+# `minimal` → `low`、`high` → `xhigh`、`max` → `xhigh`。`none` 不是等级：
+# 它映射到 `enable_thinking=false`（关闭思考）。
 #   https://docs.qwencloud.com/api-reference/chat/openai-responses
 #
-# Of the Qwen3.8 series, only `qwen3.8-max` exists in LiteLLM's catalog
-# today; the other members are curated ahead of upstream and start publishing
-# once LiteLLM adds them (skipped until then). Both Qwen3.7 entries are in
-# the catalog already.
+# Qwen3.8 系列中目前只有 `qwen3.8-max` 存在于 LiteLLM 目录；其余成员提前
+# 收录，待上游收录后自动开始发布（在那之前会被跳过）。两个 Qwen3.7 条目
+# 已在 LiteLLM 目录中。
 provider: qwencloud
 models:
   - id: qwen3.7-max
     name: "Qwen3.7-Max"
     reasoning_switch: true
-    # Hybrid thinking model: `enable_thinking` toggles thinking on/off
-    # (true = think first, false = reply directly); thinking is ON by
-    # default. No `reasoning_effort` levels exist for this family.
+    # 混合思考模型：`enable_thinking` 切换思考/不思考（true = 先思考再回复，
+    # false = 直接回复），默认开启。该系列不存在 `reasoning_effort` 等级。
     # https://docs.qwencloud.com/developer-guides/text-generation/thinking
     default_reasoning_enabled: true
   - id: qwen3.7-plus
     name: "Qwen3.7-Plus"
     reasoning_switch: true
-    # Same control as qwen3.7-max: "thinking mode is enabled by default for
-    # qwen3.7-plus" and can be disabled with `enable_thinking=false`.
+    # 控制方式与 qwen3.7-max 相同："thinking mode is enabled by default for
+    # qwen3.7-plus"（官方说明该模型默认开启思考），可用
+    # `enable_thinking=false` 关闭。
     # https://docs.qwencloud.com/developer-guides/text-generation/thinking
     default_reasoning_enabled: true
   - id: qwen3.8-2.4t-a95b
     name: "Qwen3.8-2.4T-A95B"
-    # Open-source member; thinking-only.
+    # 开源成员；仅思考模式。
     # https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B
     reasoning_levels: [low, medium, xhigh]
     reasoning_effort_aliases:
@@ -62,7 +58,7 @@ models:
     default_reasoning_effort: xhigh
   - id: qwen3.8-27b
     name: "Qwen3.8-27B"
-    # Open-source member; hybrid thinking (on by default).
+    # 开源成员；混合思考（默认开启）。
     # https://huggingface.co/Qwen/Qwen3.8-27B
     reasoning_levels: [low, medium, xhigh]
     reasoning_effort_aliases:
@@ -72,7 +68,7 @@ models:
     default_reasoning_effort: xhigh
   - id: qwen3.8-flash
     name: "Qwen3.8-Flash"
-    # Same series-level effort behaviour as qwen3.8-max
+    # effort 行为与 qwen3.8-max 同系列一致
     # https://docs.qwencloud.com/api-reference/chat/openai-chat
     reasoning_levels: [low, medium, xhigh]
     reasoning_effort_aliases:
@@ -91,7 +87,7 @@ models:
     default_reasoning_effort: xhigh
   - id: qwen3.8-max-0902
     name: "Qwen3.8-Max-0902"
-    # Snapshot of qwen3.8-max (alias qwen3.8-max-2026-09-02)
+    # qwen3.8-max 的快照（别名 qwen3.8-max-2026-09-02）
     # https://docs.qwencloud.com/api-reference/chat/openai-chat
     reasoning_levels: [low, medium, xhigh]
     reasoning_effort_aliases:

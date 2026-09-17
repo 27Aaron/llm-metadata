@@ -1,65 +1,63 @@
-# Google (Gemini) model metadata.
+# Google (Gemini) 模型元数据。
 #
-# `default_reasoning_effort` mirrors the per-model default `thinkingLevel`.
-# Google documents a default for every Gemini 3 model; values checked
-# 2026-09-16 against:
+# `default_reasoning_effort` 对应各模型默认的 `thinkingLevel`。Google 为每个
+# Gemini 3 模型都说明了默认值；2026-09-16 按以下文档核实：
 #   https://ai.google.dev/gemini-api/docs/generate-content/thinking
 #   https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/thinking
 #
-# Caveat: the Gemini 3 developer guide has a blanket "defaults to high" line
-# that contradicts the per-model table; the per-model table is authoritative.
-# Retired models are removed; see ../README.md for the audit and removal log.
+# 注意：Gemini 3 开发者指南有一句笼统的"默认 high"，与逐模型表格矛盾；
+# 此处以逐模型表格为准。已退役的模型会被移除；审计与移除记录见 ../README.md。
 provider: gemini
 models:
   - id: gemini-3-flash-preview
     name: "Gemini 3 Flash"
     reasoning_levels: [minimal, low, medium, high]
-    # Default HIGH (per-model table). The deprecations page lists gemini-3.6-flash
-    # as the recommended replacement; no shutdown date announced yet.
+    # 默认 HIGH（依据逐模型表格）。弃用页把 gemini-3.6-flash 列为推荐替代；
+    # 尚未公布关停日期。
     default_reasoning_effort: high
   - id: gemini-3-pro-image
     name: "Gemini 3 Pro Image"
     reasoning_levels: [high]
-    # "Gemini 3 Pro Image | `HIGH` | `HIGH`" — HIGH is both the default and the
-    # only supported level.
+    # 逐模型表格："Gemini 3 Pro Image | `HIGH` | `HIGH`"——HIGH 既是默认值，
+    # 也是唯一支持的等级。
     default_reasoning_effort: high
   - id: gemini-3.1-flash-image
     name: "Gemini 3.1 Flash Image"
     reasoning_levels: [minimal, high]
-    # Default MINIMAL (Gemini 3.1 Flash Image row).
+    # 默认 MINIMAL（依据 Gemini 3.1 Flash Image 行）。
     default_reasoning_effort: minimal
   - id: gemini-3.1-pro-preview
     name: "Gemini 3.1 Pro Preview"
     reasoning_levels: [low, medium, high]
-    # Default HIGH.
+    # 默认 HIGH。
     default_reasoning_effort: high
   - id: gemini-3.1-pro-preview-customtools
     name: "Gemini 3.1 Pro"
     reasoning_levels: [low, medium, high]
-    # No dedicated page for this variant; treated as Gemini 3.1 Pro (default HIGH).
+    # 该变体没有独立页面；按 Gemini 3.1 Pro 处理（默认 HIGH）。
     default_reasoning_effort: high
   - id: gemini-3.5-flash
     name: "Gemini 3.5 Flash"
     reasoning_levels: [minimal, low, medium, high]
-    # Default MEDIUM.
+    # 默认 MEDIUM。
     default_reasoning_effort: medium
   - id: gemini-3.5-flash-lite
     name: "Gemini 3.5 Flash-Lite"
     reasoning_levels: [minimal, low, medium, high]
-    # Default MINIMAL.
+    # 默认 MINIMAL。
     default_reasoning_effort: minimal
   - id: gemini-3.6-flash
     name: "Gemini 3.6 Flash"
     reasoning_levels: [minimal, low, medium, high]
-    # Default MEDIUM.
+    # 默认 MEDIUM。
     default_reasoning_effort: medium
   - id: gemini-3.7-flash
     name: "Gemini 3.7 Flash"
     reasoning_levels: [low, medium, high]
-    # Default MEDIUM.
+    # 默认 MEDIUM。
     default_reasoning_effort: medium
   - id: gemini-3.8-flash
     name: "Gemini 3.8 Flash"
     reasoning_levels: [low, medium, high]
-    # Default MEDIUM.
+    # 默认 MEDIUM。
     default_reasoning_effort: medium

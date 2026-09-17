@@ -1,45 +1,38 @@
-# Moonshot (Kimi) model metadata.
+# Moonshot (Kimi) 模型元数据。
 #
-# `default_reasoning_effort` is the API default when a request does not set
-# `reasoning_effort`. Checked 2026-09-16 against:
+# `default_reasoning_effort` 是请求未设置 `reasoning_effort` 时的 API 默认值。
+# 2026-09-16 按以下文档核实：
 #   https://platform.kimi.com/docs/guide/use-reasoning-effort
 #   https://platform.kimi.com/docs/api/models-overview
 #   https://platform.kimi.com/docs/models
 #
-# Caveat: the Kimi Code product applies its own defaults (K3 and k3-256k:
-# `high`, K2.8 Preview: `max`), which differ from the API defaults.
+# 注意：Kimi Code 产品有自己的默认值（K3 与 k3-256k：`high`；K2.8 Preview：
+# `max`），与 API 默认不同。
 #   https://www.kimi.com/code/docs/kimi-code/models.html
-# Retired models are removed; see ../README.md for the audit and removal log.
+# 已退役的模型会被移除；审计与移除记录见 ../README.md。
 provider: moonshot
 models:
   - id: kimi-k2.6
     name: "Kimi K2.6"
-    # No `reasoning_effort` support; thinking is controlled by `thinking.type`
-    # (default enabled).
+    # 不支持 `reasoning_effort`；思考由 `thinking.type` 控制（默认开启）。
   - id: kimi-k2.7-code
     name: "Kimi K2.7 Code"
-    # No `reasoning_effort` support; thinking is always on.
+    # 不支持 `reasoning_effort`；思考始终开启。
   - id: kimi-k2.7-code-highspeed
     name: "Kimi K2.7 Code HighSpeed"
-    # Same model as kimi-k2.7-code (faster output only).
+    # 与 kimi-k2.7-code 是同一模型（仅输出更快）。
   - id: kimi-k2.8
     name: "Kimi K2.8 Preview"
     reasoning_levels: [low, high, max]
-    # Kimi Code product model; not covered by the platform.kimi.com API docs.
-    # Kimi Code lists the product default as `max`; no API default documented,
-    # so left unset.
-  - id: kimi-k2.8-code
-    name: "Kimi K2.8 Code Preview"
-    reasoning_levels: [low, high, max]
-    # See kimi-k2.8 above; left unset.
+    # Kimi Code 产品侧模型；platform.kimi.com 的 API 文档未覆盖它。
+    # Kimi Code 列出的产品默认是 `max`；未文档化 API 默认值，因此留空。
   - id: kimi-k3
     name: "Kimi K3"
     reasoning_levels: [low, high, max]
-    # API default is `max`: "该字段支持 \"low\" / \"high\" / \"max\" 三档，默认 \"max\"".
+    # API 默认是 `max`："该字段支持 \"low\" / \"high\" / \"max\" 三档，默认 \"max\""。
     default_reasoning_effort: max
   - id: kimi-k3-256k
     name: "Kimi K3 256K"
     reasoning_levels: [low, high, max]
-    # Not listed on platform.kimi.com (checked 2026-09-16). Kimi Code lists
-    # `k3-256k` with a product default of `high`; no API default documented,
-    # so left unset.
+    # platform.kimi.com 未收录该模型（2026-09-16 核实）。Kimi Code 列出了
+    # `k3-256k`，产品默认为 `high`；未文档化 API 默认值，因此留空。

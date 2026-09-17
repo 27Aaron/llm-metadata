@@ -1,21 +1,20 @@
-# Z.ai (GLM) model metadata.
+# Z.ai (GLM) 模型元数据。
 #
-# `default_reasoning_effort` is the `reasoning_effort` default. Checked
-# 2026-09-16 against:
+# `default_reasoning_effort` 即 `reasoning_effort` 的默认值。2026-09-16 按
+# 以下文档核实：
 #   https://docs.bigmodel.cn/cn/guide/models/text/glm-5.3
 #   https://docs.bigmodel.cn/cn/guide/start/concept-param
 #
-# `reasoning_effort_aliases` records extra accepted values and the level each
-# one maps to, for models whose docs describe such mappings.
+# `reasoning_effort_aliases` 记录额外接受的值及各自映射到的等级，
+# 适用于文档中描述了此类映射的模型。
 provider: zai
 models:
   - id: glm-5.2
     name: "GLM-5.2"
     reasoning_levels: [low, high, max]
-    # Official note: "GLM-5.2 模型支持 max xhigh high medium low minimal none,
+    # 官方说明："GLM-5.2 模型支持 max xhigh high medium low minimal none，
     # 传入 none 或 minimal 模型会放弃思考；传入 low medium 将映射为 high；
-    # 传入 xhigh 将映射为 max". The quick-reference table lists max/high/low
-    # as the parameter's values.
+    # 传入 xhigh 将映射为 max"。快速参考表将 max/high/low 列为该参数的取值。
     # https://docs.bigmodel.cn/cn/guide/start/concept-param
     reasoning_effort_aliases:
       xhigh: max
@@ -25,11 +24,11 @@ models:
   - id: glm-5.3
     name: "GLM-5.3"
     reasoning_levels: [low, high, max]
-    # "`reasoning_effort` | `low`, `high`, `max` | Default `max`" — `xhigh` is
-    # not a valid value for this model.
+    # "`reasoning_effort` | `low`, `high`, `max` | Default `max`" —— 该模型
+    # 不接受 `xhigh`。
     default_reasoning_effort: max
   - id: glm-5.3-flash
     name: "GLM-5.3 Flash"
     reasoning_levels: [low, high, max]
-    # Same as GLM-5.3: default `max`, no `xhigh`.
+    # 与 GLM-5.3 相同：默认 `max`，不接受 `xhigh`。
     default_reasoning_effort: max

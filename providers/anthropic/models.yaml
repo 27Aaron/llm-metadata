@@ -1,13 +1,12 @@
-# Anthropic (Claude) model metadata.
+# Anthropic (Claude) 模型元数据。
 #
-# `default_reasoning_effort` is the level the Claude API applies when a request
-# does not set `output_config.effort`. Verified 2026-09-16: every model below
-# defaults to `high` — "By default, Claude uses high effort", and `high` is
-# "Equivalent to not setting the parameter".
+# `default_reasoning_effort` 是请求未设置 `output_config.effort` 时 Claude API
+# 应用的等级。2026-09-16 核实：以下所有模型都默认 `high`——官方文档称
+# "Claude 默认使用 high effort"，且 `high` 等同于不设置该参数。
 #   https://platform.claude.com/docs/en/build-with-claude/effort
 #
-# This is the API default, not the Claude Code default. Since Opus 4.7, Claude
-# Code raises its default effort to `xhigh` for all plans.
+# 这里记录的是 API 默认值，不是 Claude Code 的默认值：自 Opus 4.7 起，
+# Claude Code 将所有套餐的默认 effort 提升为 `xhigh`。
 #   https://www.anthropic.com/news/claude-opus-4-7
 provider: anthropic
 models:
@@ -50,8 +49,8 @@ models:
   - id: claude-sonnet-4-6
     name: "Claude Sonnet 4.6"
     reasoning_levels: [low, medium, high, max]
-    # API default is `high`; the docs recommend `medium` as the starting point
-    # for applications — a recommendation, not the API default.
+    # API 默认是 `high`；文档建议应用以 `medium` 作为起点——那是建议，
+    # 不是 API 默认值。
     default_reasoning_effort: high
   - id: claude-sonnet-5
     name: "Claude Sonnet 5"

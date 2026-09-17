@@ -1,22 +1,21 @@
-# DeepSeek model metadata.
+# DeepSeek 模型元数据。
 #
-# `default_reasoning_effort` is the effort applied when a request does not set
-# one. The official thinking-mode guide states it directly (checked 2026-09-16):
-# "思考模式默认打开，且 effort 默认为 `high`".
+# `default_reasoning_effort` 是请求未设置 effort 时应用的默认值。官方思考模式
+# 指南直接写明（2026-09-16 核实）："思考模式默认打开，且 effort 默认为 `high`"。
 #   https://api-docs.deepseek.com/zh-cn/guides/thinking_mode
 #
-# `reasoning_effort_aliases` records extra accepted values and the level each
-# one maps to, per the official mapping table (请求传入 effort → 实际映射 effort).
-# Retired models are removed; see ../README.md for the audit and removal log.
+# `reasoning_effort_aliases` 记录额外接受的值及各自映射到的等级，依据官方映射表
+# （请求传入 effort → 实际映射 effort）。已退役的模型会被移除；审计与移除记录见
+# ../README.md。
 provider: deepseek
 models:
   - id: deepseek-v4-flash
     name: "DeepSeek-V4-Flash"
     reasoning_levels: [low, high, max]
-    # The underlying V4 Flash model was retired on 2026-09-10, but the name is
-    # still routed to V4.1 Flash; kept because the name remains in active use.
-    # Same mapping table as deepseek-v4-pro: minimal → low, medium → high,
-    # xhigh → high, ultra → max.
+    # 底层 V4 Flash 模型已于 2026-09-10 退役，但该名称仍被路由到 V4.1 Flash；
+    # 由于名称仍在使用中，条目予以保留。
+    # 映射表与 deepseek-v4-pro 相同：minimal → low、medium → high、
+    # xhigh → high、ultra → max。
     # https://api-docs.deepseek.com/updates/
     reasoning_effort_aliases:
       minimal: low
@@ -27,8 +26,8 @@ models:
   - id: deepseek-v4-pro
     name: "DeepSeek-V4-Pro"
     reasoning_levels: [low, high, max]
-    # Same mapping table as deepseek-v4-flash: minimal → low, medium → high,
-    # xhigh → high, ultra → max.
+    # 映射表与 deepseek-v4-flash 相同：minimal → low、medium → high、
+    # xhigh → high、ultra → max。
     # https://api-docs.deepseek.com/zh-cn/guides/thinking_mode
     reasoning_effort_aliases:
       minimal: low
