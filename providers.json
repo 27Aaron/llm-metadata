@@ -1684,6 +1684,7 @@
       "source": "https://developers.openai.com/api/docs/pricing",
       "supports_xhigh_reasoning_effort": false,
       "supports_minimal_reasoning_effort": false,
+      "deprecation_date": "2027-04-01",
       "reasoning_levels": [
         "none",
         "low",
@@ -1793,6 +1794,7 @@
       "supports_none_reasoning_effort": false,
       "supports_xhigh_reasoning_effort": false,
       "supports_minimal_reasoning_effort": true,
+      "deprecation_date": "2027-04-01",
       "reasoning_levels": [
         "low",
         "medium",
@@ -1975,6 +1977,7 @@
       "source": "https://developers.openai.com/api/docs/pricing",
       "supports_xhigh_reasoning_effort": true,
       "supports_minimal_reasoning_effort": false,
+      "deprecation_date": "2027-04-01",
       "reasoning_levels": [
         "none",
         "low",
