@@ -874,7 +874,6 @@
     },
     "gemini-3.1-flash-image": {
       "provider": "gemini",
-      "deprecation_date": "2026-10-29",
       "input_cost_per_token": 5e-07,
       "input_cost_per_token_batches": 2.5e-07,
       "max_input_tokens": 131072,
@@ -886,8 +885,12 @@
       "output_cost_per_image_token_batches": 3e-05,
       "output_cost_per_token": 3e-06,
       "output_cost_per_token_batches": 1.5e-06,
-      "rpm": 1000,
-      "tpm": 4000000,
+      "rpm": 1000.0,
+      "search_context_cost_per_query": {
+        "search_context_size_low": 0.014,
+        "search_context_size_medium": 0.014,
+        "search_context_size_high": 0.014
+      },
       "source": "https://ai.google.dev/gemini-api/docs/pricing",
       "supported_endpoints": [
         "/v1/chat/completions",
@@ -903,19 +906,15 @@
         "image"
       ],
       "supports_function_calling": false,
+      "supports_pdf_input": true,
       "supports_prompt_caching": false,
       "supports_reasoning": true,
       "supports_response_schema": false,
       "supports_system_messages": true,
       "supports_vision": true,
       "supports_web_search": true,
-      "search_context_cost_per_query": {
-        "search_context_size_low": 0.014,
-        "search_context_size_medium": 0.014,
-        "search_context_size_high": 0.014
-      },
+      "tpm": 4000000.0,
       "web_search_billing_unit": "per_query",
-      "supports_pdf_input": true,
       "reasoning_levels": [
         "minimal",
         "high"
