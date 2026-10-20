@@ -2936,7 +2936,9 @@
     },
     "qwen3.7-max": {
       "provider": "qwencloud",
+      "cache_creation_input_token_cost": 3.125e-06,
       "cache_read_input_token_cost": 5e-07,
+      "explicit_cache_read_input_token_cost": 2.5e-07,
       "input_cost_per_token": 2.5e-06,
       "max_input_tokens": 991808,
       "max_output_tokens": 65536,
