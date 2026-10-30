@@ -805,6 +805,7 @@
       "output_cost_per_token_batches": 1.5e-06,
       "output_cost_per_token_flex": 1.5e-06,
       "supports_audio_input": true,
+      "supports_computer_use": true,
       "reasoning_levels": [
         "minimal",
         "low",
@@ -1025,6 +1026,9 @@
       "google_maps_grounding_cost_per_query": 0.014,
       "input_cost_per_token_flex": 1e-06,
       "output_cost_per_token_flex": 6e-06,
+      "cache_read_input_token_cost_above_200k_tokens_batches": 4e-07,
+      "input_cost_per_token_above_200k_tokens_batches": 2e-06,
+      "output_cost_per_token_above_200k_tokens_batches": 9e-06,
       "reasoning_levels": [
         "low",
         "medium",
@@ -1098,6 +1102,9 @@
       "google_maps_grounding_cost_per_query": 0.014,
       "input_cost_per_token_flex": 1e-06,
       "output_cost_per_token_flex": 6e-06,
+      "cache_read_input_token_cost_above_200k_tokens_batches": 4e-07,
+      "input_cost_per_token_above_200k_tokens_batches": 2e-06,
+      "output_cost_per_token_above_200k_tokens_batches": 9e-06,
       "reasoning_levels": [
         "low",
         "medium",
@@ -1241,6 +1248,7 @@
       },
       "web_search_billing_unit": "per_query",
       "google_maps_grounding_cost_per_query": 0.014,
+      "supports_computer_use": true,
       "reasoning_levels": [
         "minimal",
         "low",
@@ -1458,6 +1466,7 @@
       },
       "web_search_billing_unit": "per_query",
       "google_maps_grounding_cost_per_query": 0.014,
+      "supports_computer_use": true,
       "reasoning_levels": [
         "low",
         "medium",
