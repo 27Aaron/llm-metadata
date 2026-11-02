@@ -3358,57 +3358,6 @@
       "supported_output_modalities": [
         "image"
       ]
-    },
-    "grok-imagine-image-quality": {
-      "provider": "xai",
-      "deprecation_date": "2026-11-02",
-      "input_cost_per_image": 0.05,
-      "mode": "image_generation",
-      "source": "https://docs.x.ai/docs/models",
-      "supported_endpoints": [
-        "/v1/images/generations"
-      ],
-      "supported_modalities": [
-        "text",
-        "image"
-      ],
-      "supported_output_modalities": [
-        "image"
-      ]
-    },
-    "grok-imagine-image-quality-20260403": {
-      "provider": "xai",
-      "deprecation_date": "2026-11-02",
-      "input_cost_per_image": 0.05,
-      "mode": "image_generation",
-      "source": "https://docs.x.ai/docs/models",
-      "supported_endpoints": [
-        "/v1/images/generations"
-      ],
-      "supported_modalities": [
-        "text",
-        "image"
-      ],
-      "supported_output_modalities": [
-        "image"
-      ]
-    },
-    "grok-imagine-image-quality-latest": {
-      "provider": "xai",
-      "deprecation_date": "2026-11-02",
-      "input_cost_per_image": 0.05,
-      "mode": "image_generation",
-      "source": "https://docs.x.ai/docs/models",
-      "supported_endpoints": [
-        "/v1/images/generations"
-      ],
-      "supported_modalities": [
-        "text",
-        "image"
-      ],
-      "supported_output_modalities": [
-        "image"
-      ]
     }
   },
   "zai": {
