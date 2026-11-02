@@ -614,6 +614,8 @@
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "supports_vision": true,
+      "token_count_framing": 23,
+      "token_count_tool_framing": 12,
       "reasoning_levels": [
         "low",
         "high",
@@ -673,6 +675,8 @@
       "supports_system_messages": true,
       "supports_tool_choice": true,
       "supports_vision": false,
+      "token_count_framing": 76,
+      "token_count_tool_framing": 75,
       "reasoning_levels": [
         "low",
         "high",
@@ -3233,6 +3237,8 @@
       "input_cost_per_token_above_200k_tokens": 2.5e-06,
       "input_cost_per_token_above_200k_tokens_batches": 2e-06,
       "input_cost_per_token_batches": 1e-06,
+      "token_count_framing": 185,
+      "token_count_tool_framing": 214,
       "max_input_tokens": 1000000,
       "max_output_tokens": 1000000,
       "mode": "chat",
