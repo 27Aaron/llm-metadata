@@ -1728,6 +1728,7 @@
       "max_output_tokens": 128000,
       "mode": "chat",
       "output_cost_per_token": 1e-05,
+      "fedramp_uplift_multiplier": 1.1,
       "output_cost_per_token_batches": 5e-06,
       "output_cost_per_token_flex": 5e-06,
       "output_cost_per_token_priority": 2e-05,
@@ -1795,6 +1796,7 @@
       "max_output_tokens": 128000,
       "mode": "chat",
       "output_cost_per_token": 2e-06,
+      "fedramp_uplift_multiplier": 1.1,
       "output_cost_per_token_batches": 1e-06,
       "output_cost_per_token_flex": 1e-06,
       "output_cost_per_token_priority": 3.6e-06,
@@ -1859,6 +1861,7 @@
       "max_output_tokens": 128000,
       "mode": "chat",
       "output_cost_per_token": 4e-07,
+      "fedramp_uplift_multiplier": 1.1,
       "output_cost_per_token_batches": 2e-07,
       "output_cost_per_token_flex": 2e-07,
       "reasoning_contexts": [
@@ -1919,6 +1922,7 @@
       "max_output_tokens": 128000,
       "mode": "chat",
       "output_cost_per_token": 1e-05,
+      "fedramp_uplift_multiplier": 1.1,
       "output_cost_per_token_priority": 2e-05,
       "reasoning_contexts": [
         "auto",
@@ -1986,6 +1990,7 @@
       "max_output_tokens": 128000,
       "mode": "chat",
       "output_cost_per_token": 1.4e-05,
+      "fedramp_uplift_multiplier": 1.1,
       "output_cost_per_token_priority": 2.8e-05,
       "reasoning_contexts": [
         "auto",
@@ -2051,6 +2056,7 @@
       "max_output_tokens": 128000,
       "mode": "responses",
       "output_cost_per_token": 1.4e-05,
+      "fedramp_uplift_multiplier": 1.1,
       "output_cost_per_token_priority": 2.8e-05,
       "reasoning_contexts": [
         "auto",
@@ -2133,6 +2139,7 @@
       ],
       "regional_processing_uplift_multiplier_eu": 1.1,
       "regional_processing_uplift_multiplier_us": 1.1,
+      "fedramp_uplift_multiplier": 1.1,
       "supported_endpoints": [
         "/v1/chat/completions",
         "/v1/batch",
@@ -2199,6 +2206,7 @@
       ],
       "regional_processing_uplift_multiplier_eu": 1.1,
       "regional_processing_uplift_multiplier_us": 1.1,
+      "fedramp_uplift_multiplier": 1.1,
       "search_context_cost_per_query": {
         "search_context_size_high": 0.01,
         "search_context_size_low": 0.01,
@@ -2265,6 +2273,7 @@
       ],
       "regional_processing_uplift_multiplier_eu": 1.1,
       "regional_processing_uplift_multiplier_us": 1.1,
+      "fedramp_uplift_multiplier": 1.1,
       "search_context_cost_per_query": {
         "search_context_size_high": 0.01,
         "search_context_size_low": 0.01,
@@ -2334,6 +2343,7 @@
       ],
       "regional_processing_uplift_multiplier_eu": 1.1,
       "regional_processing_uplift_multiplier_us": 1.1,
+      "fedramp_uplift_multiplier": 1.1,
       "search_context_cost_per_query": {
         "search_context_size_high": 0.01,
         "search_context_size_low": 0.01,
@@ -2408,6 +2418,7 @@
       ],
       "regional_processing_uplift_multiplier_eu": 1.1,
       "regional_processing_uplift_multiplier_us": 1.1,
+      "fedramp_uplift_multiplier": 1.1,
       "search_context_cost_per_query": {
         "search_context_size_high": 0.01,
         "search_context_size_low": 0.01,
@@ -2478,6 +2489,7 @@
       ],
       "regional_processing_uplift_multiplier_eu": 1.1,
       "regional_processing_uplift_multiplier_us": 1.1,
+      "fedramp_uplift_multiplier": 1.1,
       "search_context_cost_per_query": {
         "search_context_size_high": 0.01,
         "search_context_size_low": 0.01,
@@ -2574,6 +2586,7 @@
       ],
       "regional_processing_uplift_multiplier_eu": 1.1,
       "regional_processing_uplift_multiplier_us": 1.1,
+      "fedramp_uplift_multiplier": 1.1,
       "search_context_cost_per_query": {
         "search_context_size_high": 0.01,
         "search_context_size_low": 0.01,
@@ -2674,6 +2687,7 @@
       ],
       "regional_processing_uplift_multiplier_eu": 1.1,
       "regional_processing_uplift_multiplier_us": 1.1,
+      "fedramp_uplift_multiplier": 1.1,
       "search_context_cost_per_query": {
         "search_context_size_high": 0.01,
         "search_context_size_low": 0.01,
@@ -2775,6 +2789,7 @@
       ],
       "regional_processing_uplift_multiplier_eu": 1.1,
       "regional_processing_uplift_multiplier_us": 1.1,
+      "fedramp_uplift_multiplier": 1.1,
       "search_context_cost_per_query": {
         "search_context_size_high": 0.01,
         "search_context_size_low": 0.01,
@@ -2885,6 +2900,7 @@
       ],
       "regional_processing_uplift_multiplier_eu": 1.1,
       "regional_processing_uplift_multiplier_us": 1.1,
+      "fedramp_uplift_multiplier": 1.1,
       "search_context_cost_per_query": {
         "search_context_size_high": 0.01,
         "search_context_size_low": 0.01,
