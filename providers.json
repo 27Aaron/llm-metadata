@@ -1703,6 +1703,7 @@
       "input_cost_per_token_batches": 2.5e-06,
       "mode": "image_generation",
       "output_cost_per_image_token": 3.2e-05,
+      "output_cost_per_image_token_batches": 1.6e-05,
       "output_cost_per_token": 1e-05,
       "output_cost_per_token_batches": 5e-06,
       "source": "https://developers.openai.com/api/docs/pricing",
@@ -2959,6 +2960,7 @@
       "input_cost_per_token_batches": 1e-06,
       "mode": "image_generation",
       "output_cost_per_image_token": 8e-06,
+      "output_cost_per_image_token_batches": 4e-06,
       "source": "https://developers.openai.com/api/docs/pricing",
       "supported_endpoints": [
         "/v1/images/generations",
@@ -2980,6 +2982,7 @@
       "input_cost_per_image_token_batches": 4e-06,
       "input_cost_per_token_batches": 2.5e-06,
       "output_cost_per_image_token": 3.2e-05,
+      "output_cost_per_image_token_batches": 1.6e-05,
       "output_cost_per_token_batches": 5e-06,
       "source": "https://developers.openai.com/api/docs/pricing",
       "supported_endpoints": [
@@ -3003,6 +3006,7 @@
       "input_cost_per_image_token_batches": 4e-06,
       "input_cost_per_token_batches": 2.5e-06,
       "output_cost_per_image_token": 3.2e-05,
+      "output_cost_per_image_token_batches": 1.6e-05,
       "output_cost_per_token_batches": 5e-06,
       "source": "https://developers.openai.com/api/docs/pricing",
       "supported_endpoints": [
@@ -3022,6 +3026,7 @@
       "input_cost_per_image_token_batches": 4e-06,
       "input_cost_per_token_batches": 2.5e-06,
       "output_cost_per_image_token": 3e-05,
+      "output_cost_per_image_token_batches": 1.5e-05,
       "source": "https://developers.openai.com/api/docs/pricing",
       "supported_endpoints": [
         "/v1/images/generations",
@@ -3057,6 +3062,7 @@
       "input_cost_per_image_token_batches": 4e-06,
       "input_cost_per_token_batches": 2.5e-06,
       "output_cost_per_image_token": 3e-05,
+      "output_cost_per_image_token_batches": 1.5e-05,
       "supported_endpoints": [
         "/v1/images/generations",
         "/v1/images/edits"
@@ -3092,6 +3098,7 @@
       "input_cost_per_image_token_batches": 4e-06,
       "input_cost_per_token_batches": 2.5e-06,
       "output_cost_per_image_token": 3e-05,
+      "output_cost_per_image_token_batches": 1.5e-05,
       "supported_endpoints": [
         "/v1/images/generations",
         "/v1/images/edits"
@@ -3115,6 +3122,38 @@
       "supports_vision": true,
       "supports_pdf_input": true,
       "source": "https://developers.openai.com/api/docs/pricing"
+    },
+    "gpt-image-2.6-flare": {
+      "provider": "openai",
+      "cache_read_input_image_token_cost": 2e-06,
+      "cache_read_input_token_cost": 1.25e-06,
+      "input_cost_per_image_token": 8e-06,
+      "input_cost_per_token": 5e-06,
+      "mode": "image_generation",
+      "output_cost_per_image_token": 3e-05,
+      "source": "https://developers.openai.com/api/docs/pricing",
+      "supported_endpoints": [
+        "/v1/images/generations",
+        "/v1/images/edits"
+      ],
+      "supports_pdf_input": true,
+      "supports_vision": true
+    },
+    "gpt-image-2.6-sunburst": {
+      "provider": "openai",
+      "cache_read_input_image_token_cost": 2e-06,
+      "cache_read_input_token_cost": 1.25e-06,
+      "input_cost_per_image_token": 8e-06,
+      "input_cost_per_token": 5e-06,
+      "mode": "image_generation",
+      "output_cost_per_image_token": 3e-05,
+      "source": "https://developers.openai.com/api/docs/pricing",
+      "supported_endpoints": [
+        "/v1/images/generations",
+        "/v1/images/edits"
+      ],
+      "supports_pdf_input": true,
+      "supports_vision": true
     }
   },
   "qwencloud": {
