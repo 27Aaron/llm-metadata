@@ -426,6 +426,7 @@
         "search_context_size_medium": 0.01
       },
       "supports_adaptive_thinking": true,
+      "thinking_on_by_default": true,
       "supports_mid_conversation_system": true,
       "supports_assistant_prefill": false,
       "supports_computer_use": true,
@@ -530,6 +531,7 @@
         "search_context_size_medium": 0.01
       },
       "supports_adaptive_thinking": true,
+      "thinking_on_by_default": true,
       "supports_mid_conversation_system": true,
       "supports_assistant_prefill": false,
       "supports_computer_use": true,
